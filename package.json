@@ -5,10 +5,14 @@
   "scripts": {},
   "private": true,
   "dependencies": {
-    "next": "14.0.4",
+    "@t3-oss/env-nextjs": "^0.9.2",
+    "drizzle-orm": "^0.30.8",
+    "next": "14.2.1",
+    "postgres": "^3.4.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@nx/devkit": "18.2.4",
@@ -18,11 +22,13 @@
     "@nx/js": "18.2.4",
     "@nx/next": "18.2.4",
     "@nx/playwright": "18.2.4",
+    "@nx/react": "^18.2.4",
     "@nx/workspace": "18.2.4",
     "@playwright/test": "^1.36.0",
     "@swc-node/register": "~1.8.0",
     "@swc/core": "~1.3.85",
     "@swc/helpers": "~0.5.2",
+    "@types/eslint": "^8.56.2",
     "@types/jest": "^29.4.0",
     "@types/node": "18.16.9",
     "@types/react": "18.2.33",
@@ -31,9 +37,11 @@
     "@typescript-eslint/parser": "^7.3.0",
     "autoprefixer": "10.4.13",
     "babel-jest": "^29.4.1",
+    "drizzle-kit": "^0.20.14",
     "eslint": "~8.57.0",
     "eslint-config-next": "14.0.4",
     "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-drizzle": "^0.2.3",
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-jsx-a11y": "6.7.1",
     "eslint-plugin-playwright": "^0.15.3",
@@ -42,11 +50,14 @@
     "jest": "^29.4.1",
     "jest-environment-jsdom": "^29.4.1",
     "nx": "18.2.4",
-    "postcss": "8.4.21",
-    "prettier": "^2.6.2",
-    "tailwindcss": "3.2.7",
+    "pg": "^8.11.3",
+    "postcss": "^8.4.34",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.11",
+    "tailwindcss": "^3.4.1",
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
-    "typescript": "~5.4.2"
-  }
+    "typescript": "^5.4.2"
+  },
+  "packageManager": "pnpm@8.15.5"
 }
