@@ -1,62 +1,31 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "types": [
-      "jest",
-      "node"
-    ],
-    /* Base Options: */
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "target": "es2022",
-    "allowJs": true,
-    "resolveJsonModule": true,
-    "moduleDetection": "force",
-    "isolatedModules": true,
-    /* Strictness */
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "checkJs": true,
-    /* Bundled projects */
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "ES2022"
-    ],
-    "noEmit": true,
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
     "jsx": "preserve",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "incremental": true,
     "plugins": [
       {
         "name": "next"
       }
     ],
-    "incremental": true,
-    /* Path Aliases */
-    "paths": {
-      "~/*": [
-        "apps/website/src/*"
-      ]
-    }
+    "types": ["jest", "node"]
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     "**/*.js",
     "**/*.jsx",
-    "**/*.cjs",
-    "../../apps/website/.next/types/**/*.ts",
-    "../../dist/apps/website/.next/types/**/*.ts",
-    "next-env.d.ts",
-    ".next/types/**/*.ts"
+    "../../apps/demo-app/.next/types/**/*.ts",
+    "../../dist/apps/demo-app/.next/types/**/*.ts",
+    "next-env.d.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "jest.config.ts",
-    "**/*.spec.ts",
-    "**/*.test.ts"
-  ]
+  "exclude": ["node_modules", "jest.config.ts", "**/*.spec.ts", "**/*.test.ts"]
 }

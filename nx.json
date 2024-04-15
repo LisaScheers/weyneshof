@@ -1,7 +1,10 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
+    ],
     "production": [
       "default",
       "!{projectRoot}/.eslintrc.json",
@@ -49,6 +52,9 @@
         "style": "tailwind",
         "linter": "eslint"
       }
+    },
+    "@nx/react": {
+      "library": {}
     }
   },
   "nxCloudAccessToken": "MDA4OGQ4NjYtZTBmZi00OTllLTg1NTAtNDhmZjg2NjYxOGI0fHJlYWQtd3JpdGU="
