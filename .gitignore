@@ -46,3 +46,6 @@ out
 
 # sentry
 .sentryclirc
+
+# env files
+.env
