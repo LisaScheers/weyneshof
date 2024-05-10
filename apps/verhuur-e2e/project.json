@@ -1,0 +1,9 @@
+{
+  "name": "verhuur-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/verhuur-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["verhuur"],
+  "// targets": "to see all targets run: nx show project verhuur-e2e --web",
+  "targets": {}
+}

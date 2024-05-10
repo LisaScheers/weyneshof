@@ -1,0 +1,33 @@
+{
+  "name": "verhuur",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/verhuur",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project verhuur --web",
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/verhuur",
+        "outputPath": "dist/apps/verhuur"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/verhuur"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "verhuur:build",
+        "dev": true
+      }
+    }
+  }
+}
