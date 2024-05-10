@@ -1,8 +1,8 @@
 //@ts-check
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { composePlugins, withNx } = require('@nx/next');
-const { withSentryConfig } = require("@sentry/nextjs");
+const { withSentryConfig } =require('@sentry/nextjs');
+
 
 
 /**
@@ -27,10 +27,9 @@ const userSentryWebpackPluginOptions = {
     project: "website",
 }
 
-/**
- * //todo: //@type {import("@sentry/nextjs").UserSentryOptions}
- **/
+
 const sentryOptions = {
+
   // For all available options, see:
     // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
 
@@ -59,9 +58,14 @@ const sentryOptions = {
     automaticVercelMonitors: true,
 }
 
+
+
 const plugins = [
   // Add more Next.js plugins to this list if needed.
   withNx,
 ];
 
-module.exports = withSentryConfig(composePlugins(...plugins)(nextConfig), userSentryWebpackPluginOptions, sentryOptions);
+const config = composePlugins(...plugins)(nextConfig);
+const configWithSentry = withSentryConfig(config, userSentryWebpackPluginOptions, sentryOptions);
+module.exports = configWithSentry
+

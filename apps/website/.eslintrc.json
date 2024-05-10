@@ -1,5 +1,5 @@
 {
-  "parser": "@typescript-eslint/parser",
+
   "plugins": [
     "@typescript-eslint",
     "drizzle"
@@ -8,9 +8,7 @@
     "plugin:@nx/react-typescript",
     "next",
     "next/core-web-vitals",
-    "../../.eslintrc.json",
-    "plugin:@typescript-eslint/recommended-type-checked",
-    "plugin:@typescript-eslint/stylistic-type-checked"
+    "../../.eslintrc.json"
   ],
   "rules": {
     "@typescript-eslint/array-type": "off",
@@ -29,14 +27,7 @@
       }
     ],
     "@typescript-eslint/require-await": "off",
-    "@typescript-eslint/no-misused-promises": [
-      "error",
-      {
-        "checksVoidReturn": {
-          "attributes": false
-        }
-      }
-    ],
+
     "drizzle/enforce-delete-with-where": [
       "error",
       {
