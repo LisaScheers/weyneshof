@@ -1,6 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
+  // use Bundler
+
   "compilerOptions": {
+    "moduleResolution": "Bundler",
     "jsx": "preserve",
     "allowJs": true,
     "esModuleInterop": true,

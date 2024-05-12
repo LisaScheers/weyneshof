@@ -1,11 +1,11 @@
 {
-  "name": "ui",
+  "name": "weyneshof-ui",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/ui/src",
   "projectType": "library",
   "tags": [],
   "targets": {
-    "add": {
+    "add-component": {
       "executor": "@nx-extend/shadcn-ui:add"
     }
   }

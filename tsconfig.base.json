@@ -18,7 +18,8 @@
       "@weyneshof/ui": ["libs/ui/src/index.ts"],
       "@weyneshof/ui/*": ["libs/ui/src/*"],
       "@weyneshof/util": ["libs/util/src/index.ts"],
-      "@weyneshof/util/*": ["libs/util/src/*"]
+      "@weyneshof/util/*": ["libs/util/src/*"],
+      "@weyneshof/website/*": ["apps/website/src/*"],
     }
   },
   "exclude": ["node_modules", "tmp"]
