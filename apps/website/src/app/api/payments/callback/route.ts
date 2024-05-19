@@ -1,7 +1,7 @@
 import { type NextApiRequest, type NextApiResponse } from 'next';
 import { mollieClient } from '../../../../mollie';
-import { PaymentStatus } from '@mollie/api-client/dist/types/src/data/payments/data';
 import { notImplemented, todo } from '../../../../todo';
+import { PaymentStatus } from '@mollie/api-client';
 // docs: https://docs.mollie.com/overview/webhooks
 export const GET = async (req: NextApiRequest, res: NextApiResponse) => {
   notImplemented('GET /api/payments/callback not implemented');
