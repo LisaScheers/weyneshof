@@ -1,16 +1,30 @@
-import { type NextApiRequest, type NextApiResponse } from 'next';
 import { mollieClient } from '../../../../mollie';
 import { notImplemented, todo } from '../../../../todo';
 import { PaymentStatus } from '@mollie/api-client';
+import { type NextRequest, NextResponse } from 'next/server';
 // docs: https://docs.mollie.com/overview/webhooks
-export const GET = async (req: NextApiRequest, res: NextApiResponse) => {
+export const GET = async (req: NextRequest | Request) => {
   notImplemented('GET /api/payments/callback not implemented');
+  return NextResponse.json({
+    message: 'GET /api/payments/callback not implemented',
+  });
 };
 
-export const POST = async (req: NextApiRequest, res: NextApiResponse) => {
+export const POST = async (req: NextRequest | Request) => {
   // get id from form data
 
-  const id = req.body.id as string;
+  const bodyReader = req.body?.getReader();
+  if (!bodyReader) {
+    throw new Error('No body reader');
+  }
+
+  const { value } = await bodyReader.read();
+  if (!value) {
+    throw new Error('No value');
+  }
+
+  const id = new TextDecoder().decode(value);
+
   try {
     const payment = await mollieClient.payments.get(id);
     switch (payment.status) {
@@ -50,5 +64,8 @@ export const POST = async (req: NextApiRequest, res: NextApiResponse) => {
   } catch (error) {
     console.error(error);
   }
-  res.status(200).end();
+
+  return NextResponse.json({
+    message: 'POST /api/payments/callback not implemented',
+  });
 };
