@@ -1,3 +1,4 @@
+import { PropsWithChildren } from 'react';
 
 export const metadata = {
   title: 'Verhuur',
@@ -5,10 +6,6 @@ export const metadata = {
   icons: [{ rel: 'icon', url: '/favicon.ico' }],
 };
 
-export default function Layout() {
-
-  return (
-    <>
-    </>
-  );
+export default function Layout(props: PropsWithChildren) {
+  return <>{props.children}</>;
 }

@@ -1,0 +1,43 @@
+<div className="mx-auto max-w-md space-y-6 py-12">
+  <form className="space-y-4">
+    <div className="grid grid-cols-2 gap-4">
+      <div className="space-y-2">
+        <Label htmlFor="first-name">First Name</Label>
+        <Input id="first-name" placeholder="John" required />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="last-name">Last Name</Label>
+        <Input id="last-name" placeholder="Doe" required />
+      </div>
+    </div>
+    <div className="space-y-2">
+      <Label htmlFor="email">Email</Label>
+      <Input id="email" placeholder="example@email.com" required type="email" />
+    </div>
+    <div className="space-y-2">
+      <Label htmlFor="phone">Phone</Label>
+      <Input id="phone" placeholder="+1 (555) 555-5555" required type="tel" />
+    </div>
+    <div className="grid grid-cols-3 gap-4">
+      <div className="space-y-2">
+        <Label htmlFor="street">Street</Label>
+        <Input id="street" placeholder="123 Main St" required />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="number">Number</Label>
+        <Input id="number" placeholder="Apt 123" required />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="postal-code">Postal Code</Label>
+        <Input id="postal-code" placeholder="12345" required />
+      </div>
+    </div>
+    <div className="space-y-2">
+      <Label htmlFor="city">City</Label>
+      <Input id="city" placeholder="New York" required />
+    </div>
+    <Button className="w-full" type="submit">
+      Register
+    </Button>
+  </form>
+</div>

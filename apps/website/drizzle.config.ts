@@ -1,12 +1,13 @@
-import { type Config } from "drizzle-kit";
+import { type Config } from 'drizzle-kit';
 
-import { env } from "@weyneshof/website/env";
+import { env } from './src/env';
+import { defineConfig } from 'drizzle-kit';
 
-export default {
-  schema: "./src/server/db/schema.ts",
-  driver: "pg",
+export default defineConfig({
+  dialect: 'postgresql',
+  tablesFilter: ['web_*'],
   dbCredentials: {
-    connectionString: env.POSTGRES_URL,
+    url: env.POSTGRES_URL,
   },
-  tablesFilter: ["demo-app_*"],
-} satisfies Config;
+  schema: './src/server/db/schema.ts',
+});

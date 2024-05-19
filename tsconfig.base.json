@@ -10,17 +10,30 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@weyneshof/ui": ["libs/ui/src/index.ts"],
-      "@weyneshof/ui/*": ["libs/ui/src/*"],
-      "@weyneshof/util": ["libs/util/src/index.ts"],
-      "@weyneshof/util/*": ["libs/util/src/*"],
-      "@weyneshof/website/*": ["apps/website/src/*"],
+      "@weyneshof/ui": [
+        "libs/ui/src/index.ts"
+      ],
+      "@weyneshof/ui/*": [
+        "libs/ui/src/*"
+      ],
+      "@weyneshof/util": [
+        "libs/util/src/index.ts"
+      ],
+      "@weyneshof/util/*": [
+        "libs/util/src/*"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

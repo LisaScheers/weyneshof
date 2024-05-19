@@ -1,22 +1,32 @@
-"use client";
+'use client';
 
-import * as Sentry from "@sentry/nextjs";
-import Error from "next/error";
-import { useEffect } from "react";
+import * as Sentry from '@sentry/nextjs';
+import { useEffect } from 'react';
+import { Button } from '@weyneshof/ui/button';
+import { useSession } from 'next-auth/react';
 
 export default function GlobalError(props: {
-  error: Error & { digest?: string }
-  reset: () => void
+  error: Error & { digest?: string };
+  reset: () => void;
 }) {
+  const session = useSession();
+
   useEffect(() => {
-    Sentry.captureException(props.error);
+    if (session.status === 'authenticated')
+      Sentry.captureException(props.error);
+
+    console.error(props.error);
   }, [props.error]);
 
   return (
     <html>
-      <body>
-        <Error statusCode={props.error.props.statusCode} />
-        <button onClick={props.reset}>Reset</button>
+      <body
+        className={
+          'flex h-screen w-screen flex-col items-center justify-center '
+        }
+      >
+        <h1>Something went wrong</h1>
+        <Button onClick={props.reset}>Reset</Button>
       </body>
     </html>
   );
