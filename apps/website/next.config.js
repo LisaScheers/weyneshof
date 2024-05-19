@@ -37,7 +37,7 @@ const nextConfig = {
 const userSentryWebpackPluginOptions = {
   // Suppresses source map uploading logs during build
   silent: true,
-  org: 'Weyneshof',
+  org: 'weyneshof-x0',
   project: 'website',
 };
 
