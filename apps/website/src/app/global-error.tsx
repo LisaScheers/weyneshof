@@ -3,18 +3,13 @@
 import * as Sentry from '@sentry/nextjs';
 import { useEffect } from 'react';
 import { Button } from '@weyneshof/ui/button';
-import { useSession } from 'next-auth/react';
 
 export default function GlobalError(props: {
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  const session = useSession();
-
   useEffect(() => {
-    if (session.status === 'authenticated')
-      Sentry.captureException(props.error);
-
+    Sentry.captureException(props.error);
     console.error(props.error);
   }, [props.error]);
 

@@ -11,14 +11,10 @@ import {
 } from '@weyneshof/ui/navigation-menu';
 import { type PropsWithChildren } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@weyneshof/ui/avatar';
-import { type User } from 'next-auth';
 import { Button } from '@weyneshof/ui/button';
+import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
 
-export default function Navigation(
-  props: PropsWithChildren<{
-    user?: User;
-  }>,
-) {
+export default function Navigation(props: PropsWithChildren) {
   return (
     <div className="grid w-full grid-cols-3 p-2">
       <div></div>
@@ -56,19 +52,14 @@ export default function Navigation(
         </NavigationMenuList>
       </NavigationMenu>
       <div className={'flex items-center justify-end'}>
-        {props.user ? (
-          <Avatar>
-            <AvatarImage
-              src={props.user.image as string}
-              alt={props.user.name as string}
-            />
-            <AvatarFallback>{props.user.name?.charAt(0)}</AvatarFallback>
-          </Avatar>
-        ) : (
-          <Link href={'/login'}>
-            <Button variant={'link'}>login</Button>
-          </Link>
-        )}
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+        <SignedOut>
+          <SignInButton>
+            <Button variant={'link'}>Loggin</Button>
+          </SignInButton>
+        </SignedOut>
       </div>
     </div>
   );

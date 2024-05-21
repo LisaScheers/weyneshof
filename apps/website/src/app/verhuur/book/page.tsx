@@ -1,11 +1,9 @@
-import { auth } from '../../../auth';
-import { use } from 'react';
-
 import { redirect, RedirectType } from 'next/navigation';
 import BookingForm from './_components/booking-form';
+import { auth } from '@clerk/nextjs/server';
 
-export default function BookPage() {
-  const session = use(auth());
+export default async function BookPage() {
+  const session = auth();
   if (!session) {
     redirect(
       `/login?url=${encodeURIComponent('/verhuur/book')}`,

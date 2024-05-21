@@ -1,8 +1,6 @@
 import Image from 'next/image';
-import LogoImg from './content/Logo_postit.png';
+import LogoImg from '../../../public/Logo_postit.png';
 
 export default function Logo() {
-  return (
-    <img src={'/content/Logo_postit.png'} alt={'Logo'} className="w-[350px]" />
-  );
+  return <img src={'/Logo_postit.png'} alt={'Logo'} className="w-[350px]" />;
 }

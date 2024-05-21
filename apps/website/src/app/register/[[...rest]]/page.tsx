@@ -1,19 +1,15 @@
-import { auth, signIn } from '../../../auth';
-import { use } from 'react';
 import { redirect, RedirectType } from 'next/navigation';
 import Link from 'next/link';
 import Logo from '../../_components/logo';
-import { subtitleFont, titleFont } from '@weyneshof/util/fonts';
-import { z } from 'zod';
-import { Button } from '@weyneshof/ui/button';
+import { titleFont } from '@weyneshof/util/fonts';
+import { SignIn, SignUp } from '@clerk/nextjs';
+import { auth } from '@clerk/nextjs/server';
 
-export default async function loginPage(props: {
-  searchParams?: { url?: string };
-}) {
-  const session = await auth();
+export default function loginPage(props: { searchParams?: { url?: string } }) {
+  const session = auth();
 
-  if (session) {
-    redirect('/administratie', RedirectType.replace);
+  if (!session.userId) {
+    //redirect('/', RedirectType.replace);
   }
   return (
     <>
@@ -41,40 +37,10 @@ export default async function loginPage(props: {
                   ' text-secondary text-2xl font-semibold tracking-tight'
                 }
               >
-                Login voor medewerkers
+                Het plezier begint hier
               </h1>
-              <p
-                className={
-                  subtitleFont.className + ' text-muted-foreground text-sm'
-                }
-              >
-                dit is enkel voor medewerkers,{' '}
-                <Link
-                  href="/login"
-                  className="hover:text-primary underline underline-offset-4"
-                >
-                  ben je geen medewerker? klik hier!
-                </Link>
-              </p>
             </div>
-            <form
-              action={async (formData) => {
-                'use server';
-                const url =
-                  z.string().optional().parse(formData.get('redirectUrl')) ??
-                  '/administratie';
-                await signIn('google', { redirectTo: url, redirect: true });
-              }}
-            >
-              <input
-                type="hidden"
-                name="redirectUrl"
-                value={props.searchParams?.url}
-              />
-              <Button type="submit" className={'w-full'} variant={'secondary'}>
-                Login with Google
-              </Button>
-            </form>
+            <SignUp path="/register" />
             <p className="text-muted-foreground px-8 text-center text-sm">
               door te clicken op inloggen ga je accoord met onze{' '}
               <Link
@@ -84,6 +50,14 @@ export default async function loginPage(props: {
                 Voorwaarden en Privacybeleid
               </Link>
               .
+            </p>
+            <p className="text-muted-foreground px-8 text-center text-sm">
+              <Link
+                href="/administratie/login"
+                className="hover:text-primary underline underline-offset-4"
+              >
+                Ben je een medewerker? Klik hier om in te loggen
+              </Link>
             </p>
           </div>
         </div>

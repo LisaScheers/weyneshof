@@ -1,16 +1,15 @@
-import { auth } from '../../auth';
-import { use } from 'react';
 import { redirect, RedirectType } from 'next/navigation';
-import LoginForm from './_components/form';
 import Link from 'next/link';
-import Logo from '../_components/logo';
-import { subtitleFont, titleFont } from '@weyneshof/util/fonts';
+import Logo from '../../_components/logo';
+import { titleFont } from '@weyneshof/util/fonts';
+import { SignIn } from '@clerk/nextjs';
+import { auth } from '@clerk/nextjs/server';
 
 export default function loginPage(props: { searchParams?: { url?: string } }) {
-  const session = use(auth());
+  const session = auth();
 
-  if (session) {
-    redirect('/', RedirectType.replace);
+  if (!session.userId) {
+    //redirect('/', RedirectType.replace);
   }
   return (
     <>
@@ -40,15 +39,8 @@ export default function loginPage(props: { searchParams?: { url?: string } }) {
               >
                 Het plezier begint hier
               </h1>
-              <p
-                className={
-                  subtitleFont.className + ' text-muted-foreground text-sm'
-                }
-              >
-                voer je e-mailadres in om in te loggen
-              </p>
             </div>
-            <LoginForm url={props.searchParams?.url} />
+            <SignIn path="/login" />
             <p className="text-muted-foreground px-8 text-center text-sm">
               door te clicken op inloggen ga je accoord met onze{' '}
               <Link

@@ -1,10 +1,10 @@
-import { use } from 'react';
-import { auth, signOut } from '../../auth';
 import { Button } from '@weyneshof/ui/button';
 import { redirect, RedirectType } from 'next/navigation';
+import { auth } from '@clerk/nextjs/server';
+import { SignOutButton } from '@clerk/nextjs';
 
-export default function logoutPage(props: {}) {
-  const session = use(auth());
+export default async function logoutPage(props: {}) {
+  const session = auth();
 
   if (!session) {
     redirect('/', RedirectType.replace);
@@ -13,14 +13,9 @@ export default function logoutPage(props: {}) {
   return (
     <div>
       <h5>Are you sure you want to sign out?</h5>
-      <form
-        action={async (formData) => {
-          'use server';
-          await signOut({ redirectTo: '/' });
-        }}
-      >
+      <SignOutButton>
         <Button type="submit">Sign out</Button>
-      </form>
+      </SignOutButton>
     </div>
   );
 }

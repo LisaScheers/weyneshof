@@ -2,9 +2,10 @@ import '@weyneshof/util/global.css';
 import { bodyFont } from '@weyneshof/util/fonts';
 import { type Metadata } from 'next';
 import SentryAuthProvider from './_telemetry/sentry';
-import { SessionProvider } from 'next-auth/react';
 import CaptchaProvider from './_telemetry/captcha';
 import PosthogProviderWrapper from './_telemetry/posthog-server';
+import { ClerkProvider } from '@clerk/nextjs';
+import { nlNL } from '@clerk/localizations';
 
 export const metadata: Metadata = {
   title: 'Weyneshof',
@@ -37,16 +38,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${bodyFont.className} bg-background text-foreground`}>
-        <SessionProvider>
+    <ClerkProvider
+      localization={nlNL}
+      signInUrl={'/login'}
+      signUpUrl={'/register'}
+    >
+      <html lang="en">
+        <body className={`${bodyFont.className} bg-background text-foreground`}>
           <SentryAuthProvider>
             <PosthogProviderWrapper>
               <CaptchaProvider>{children}</CaptchaProvider>
             </PosthogProviderWrapper>
           </SentryAuthProvider>
-        </SessionProvider>
-      </body>
-    </html>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

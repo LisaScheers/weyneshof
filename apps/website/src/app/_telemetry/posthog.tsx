@@ -3,7 +3,7 @@ import posthog from 'posthog-js';
 import { PostHogProvider } from 'posthog-js/react';
 import { env } from '../../env';
 import { type PropsWithChildren, useEffect } from 'react';
-import { useSession } from 'next-auth/react';
+import { useSession, useAuth } from '@clerk/nextjs';
 
 if (typeof window !== 'undefined') {
   posthog.init(env.NEXT_PUBLIC_POSTHOG_KEY, {
@@ -21,16 +21,17 @@ export function CSPostHogProvider(props: PropsWithChildren) {
 }
 
 function AuthWrapper(props: PropsWithChildren) {
-  const session = useSession();
+  const auth = useAuth();
+  const { session } = useSession();
 
   useEffect(() => {
-    if (session?.data?.user?.id)
-      posthog.identify(session?.data?.user?.id, {
-        email: session?.data?.user?.email,
-        name: session?.data?.user?.name,
+    if (auth.isSignedIn)
+      posthog.identify(auth.userId, {
+        email: session?.user.emailAddresses[0]?.emailAddress,
+        name: session?.user.fullName,
       });
-    else if (session.status === 'unauthenticated') posthog.reset();
-  }, [session]);
+    else posthog.reset();
+  }, [auth, session]);
 
   return <>{props.children}</>;
 }

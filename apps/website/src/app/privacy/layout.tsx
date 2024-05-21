@@ -1,13 +1,10 @@
-import { type PropsWithChildren, use } from 'react';
+import { type PropsWithChildren } from 'react';
 import Navigation from '../_components/navigation';
-import { auth } from '../../auth';
 
-export default function PrivacyLayout(props: PropsWithChildren) {
-  const session = use(auth());
-
+export default async function PrivacyLayout(props: PropsWithChildren) {
   return (
     <>
-      <Navigation user={session?.user} />
+      <Navigation />
 
       {props.children}
     </>
